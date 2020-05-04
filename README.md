@@ -31,3 +31,21 @@ docker version
 
 ## MQTT Mosquitto
 this is the communication protocol used for machine to machine light weight - [Referance](https://tewarid.github.io/2019/04/03/installing-and-configuring-the-mosquitto-mqtt-broker.html)
+
+```
+docker run -it --name mosquitto --net=host -p 1883:1883 -d --restart always eclipse-mosquitto
+```
+
+## Node Red
+```
+docker run -it -d --restart always -p 1880:1880 --net=host --name mynodered nodered/node-red-docker
+```
+
+## Home Asistant
+```
+docker run --init -d --name="home-assistant" -e "TZ=America/New_York" -v /PATH_TO_YOUR_CONFIG:/config --net=host homeassistant/raspberrypi3-homeassistant:stable
+```
+
+```
+sudo docker run --restart always -d --name="homeassistant" -v /PATH_TO_YOUR_CONFIG:/config --device=/PATH_TO_YOUR_USB_STICK -e TZ=Australia/Melbourne --net=host homeassistant/home-assistant:stable
+```
